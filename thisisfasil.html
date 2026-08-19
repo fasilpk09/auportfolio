@@ -1,0 +1,4313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<title>Fasil — Selected Work</title>
+
+<style>
+
+/* =========================================================
+   FONTS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --bg: #0a0a0a;
+
+    --surface: #101010;
+
+    --surface-2: #141414;
+
+    --text: #f1f0eb;
+
+    --muted: #8c8c87;
+
+    --muted-2: #5f5f5b;
+
+    --line: #292929;
+
+    --accent: #d8ff3e;
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: "DM Sans", sans-serif;
+
+}
+
+
+.page {
+
+    max-width: 1440px;
+
+    margin: auto;
+
+    padding: 0 5vw;
+
+}
+
+
+/* =========================================================
+   PERSONAL HERO
+========================================================= */
+
+.personal-intro {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 38px 0 80px;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+/* =========================================================
+   TOP LINE
+========================================================= */
+
+.personal-intro-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    position: relative;
+
+    z-index: 10;
+
+    font-size: 11px;
+
+    letter-spacing: .13em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   CINEMATIC NAME STAGE
+========================================================= */
+
+.name-stage {
+
+    position: relative;
+
+    min-height: 510px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    margin-left: calc(-5vw);
+
+    margin-right: calc(-5vw);
+
+}
+
+
+/*
+    Full-width cinematic image layer
+*/
+
+.name-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #101010;
+
+}
+
+
+/*
+    Individual hero photographs
+*/
+
+.name-photo {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    opacity: 0;
+
+    transform: scale(1.025);
+
+    transition:
+
+        opacity .8s ease,
+
+        transform 5s cubic-bezier(.2,.7,.2,1);
+
+}
+
+
+/*
+    Active image
+*/
+
+.name-photo.active {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* =========================================================
+   CINEMATIC GRADIENTS
+========================================================= */
+
+.name-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(10,10,10,.96) 0%,
+            rgba(10,10,10,.76) 22%,
+            rgba(10,10,10,.25) 58%,
+            rgba(10,10,10,.12) 100%
+        );
+
+}
+
+
+.name-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(10,10,10,.15) 0%,
+            rgba(10,10,10,0) 40%,
+            rgba(10,10,10,.25) 62%,
+            #0a0a0a 100%
+        );
+
+}
+
+
+/* =========================================================
+   NAME
+========================================================= */
+
+.name-line {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    padding: 0 5vw;
+
+    display: flex;
+
+    align-items: baseline;
+
+    white-space: nowrap;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(70px, 11vw, 165px);
+
+    line-height: .85;
+
+    letter-spacing: -.075em;
+
+    font-weight: 600;
+
+}
+
+
+/*
+    "Hi I'm"
+*/
+
+.name-prefix {
+
+    flex-shrink: 0;
+
+    margin-right: .17em;
+
+    color: var(--text);
+
+}
+
+
+/*
+    Changing name
+*/
+
+.name-changing {
+
+    position: relative;
+
+    display: inline-block;
+
+    height: 1em;
+
+    min-width: 3.8em;
+
+    color: var(--accent);
+
+    transform: translateY(35px);
+
+
+}
+
+
+/*
+    Individual names
+*/
+
+.name-word {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    opacity: 0;
+
+    transform: translateY(45px);
+
+    transition:
+
+        opacity .65s ease,
+
+        transform .65s cubic-bezier(.2,.7,.2,1);
+
+    white-space: nowrap;
+
+}
+
+
+/*
+    Language-specific fonts
+*/
+
+.name-word[data-index="1"] {
+
+    font-family:
+        "Noto Sans Malayalam",
+        sans-serif;
+
+    letter-spacing: -.055em;
+}
+
+
+.name-word[data-index="2"] {
+
+    font-family:
+        "Noto Sans Devanagari",
+        sans-serif;
+
+    letter-spacing: -.055em;
+
+}
+
+
+.name-word[data-index="3"] {
+
+    font-family:
+        "Noto Sans Arabic",
+        sans-serif;
+
+    letter-spacing: -.045em;
+
+}
+
+
+/*
+    Active name
+*/
+
+.name-word.active {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   HERO BOTTOM
+========================================================= */
+
+.personal-intro-bottom {
+
+    position: relative;
+
+    z-index: 10;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: end;
+
+}
+
+
+.personal-intro-note {
+
+    max-width: 680px;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    color: #b7b6b0;
+
+}
+
+
+.personal-intro-role {
+
+    text-align: right;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    text-transform: uppercase;
+
+    letter-spacing: .12em;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-section {
+
+    padding: 150px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 90px;
+
+    align-items: center;
+
+}
+
+
+.about-photo {
+
+    position: relative;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+}
+
+
+.about-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.about-label {
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .14em;
+
+    color: var(--accent);
+
+    margin-bottom: 30px;
+
+}
+
+
+.about-title {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(42px, 5vw, 72px);
+
+    line-height: .95;
+
+    letter-spacing: -.05em;
+
+    margin: 0 0 35px;
+
+}
+
+
+.about-copy {
+
+    max-width: 650px;
+
+    color: #aaa9a3;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin: 0;
+
+}
+
+/* =========================================================
+   VISUAL WORK / COLOUR & PHOTOGRAPHY
+========================================================= */
+
+.visual-section {
+
+    padding: 150px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.visual-header {
+
+    display: grid;
+
+    grid-template-columns: 180px 1fr;
+
+    gap: 50px;
+
+    margin-bottom: 80px;
+
+}
+
+
+.visual-index {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 14px;
+
+    letter-spacing: .12em;
+
+    color: var(--accent);
+
+    padding-top: 8px;
+
+}
+
+
+.visual-header h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(52px, 7vw, 105px);
+
+    line-height: .88;
+
+    letter-spacing: -.06em;
+
+    margin: 0 0 30px;
+
+}
+
+
+.visual-header p {
+
+    max-width: 600px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin: 0;
+
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.visual-gallery {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+.visual-item {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+}
+
+
+.visual-item img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+
+        transform .8s cubic-bezier(.2,.7,.2,1),
+
+        filter .5s ease;
+
+}
+
+
+.visual-item:hover img {
+
+    transform: scale(1.025);
+
+}
+
+
+/* =========================================================
+   GALLERY FORMATS
+========================================================= */
+
+.visual-item {
+
+    aspect-ratio: 4 / 3;
+
+}
+
+
+.visual-large {
+
+    grid-column: span 2;
+
+    aspect-ratio: 21 / 9;
+
+}
+
+
+.visual-wide {
+
+    grid-column: span 2;
+
+    aspect-ratio: 16 / 7;
+
+}
+
+/* =========================================================
+   WORK SECTION
+========================================================= */
+
+.work-section {
+
+    position: relative;
+
+    margin-top: 80px;
+
+    padding-top: 70px;
+
+    padding-bottom: 50px;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.section-header {
+
+    display: grid;
+
+    grid-template-columns: 180px 1fr;
+
+    gap: 50px;
+
+    margin-bottom: 100px;
+
+}
+
+
+.section-index {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 14px;
+
+    letter-spacing: .12em;
+
+    color: var(--accent);
+
+    padding-top: 8px;
+
+}
+
+
+.section-header h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(52px, 7vw, 105px);
+
+    line-height: .88;
+
+    letter-spacing: -.06em;
+
+    margin: 0 0 30px;
+
+}
+
+
+.section-header p {
+
+    max-width: 650px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin: 0;
+
+}
+
+
+/* =========================================================
+   PROJECT
+========================================================= */
+
+.project {
+
+    margin-bottom: 150px;
+
+}
+
+
+.project-heading {
+
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    border-top: 1px solid var(--line);
+
+    padding: 18px 0 24px;
+
+}
+
+
+.project-number {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .13em;
+
+    color: var(--muted-2);
+
+    white-space: nowrap;
+
+}
+
+
+.project-name {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(28px, 3vw, 48px);
+
+    line-height: .95;
+
+    letter-spacing: -.04em;
+
+    margin: 0;
+
+    flex: 1;
+
+}
+
+
+.project-type {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .12em;
+
+    color: var(--muted);
+
+    text-align: right;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.video-wrap {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background: #111;
+
+    cursor: pointer;
+
+}
+
+
+.video-wrap img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    filter: saturate(.85);
+
+    transition:
+
+        transform .7s cubic-bezier(.2,.7,.2,1),
+
+        filter .5s ease;
+
+}
+
+
+.video-wrap:hover img {
+
+    transform: scale(1.025);
+
+    filter: saturate(1);
+
+}
+
+
+.featured .video-wrap {
+
+    aspect-ratio: 21 / 9;
+
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
+
+.play {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 82px;
+
+    height: 82px;
+
+    border: 1px solid rgba(255,255,255,.7);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    backdrop-filter: blur(8px);
+
+    background: rgba(0,0,0,.18);
+
+    transition: all .35s ease;
+
+}
+
+
+.play:after {
+
+    content: "";
+
+    width: 0;
+
+    height: 0;
+
+    border-top: 7px solid transparent;
+
+    border-bottom: 7px solid transparent;
+
+    border-left: 10px solid white;
+
+    margin-left: 4px;
+
+}
+
+
+.video-wrap:hover .play {
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+}
+
+
+.video-wrap:hover .play:after {
+
+    border-left-color: #000;
+
+}
+
+
+.video-wrap iframe {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+}
+
+
+/* =========================================================
+   PROJECT INFO
+========================================================= */
+
+.project-info {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    margin-top: 28px;
+
+}
+
+
+.project-description {
+
+    max-width: 560px;
+
+    color: #a5a49e;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+    margin: 0;
+
+}
+
+
+/* =========================================================
+   TWO COLUMN PROJECTS
+========================================================= */
+
+.project-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px 30px;
+
+}
+
+
+.project-grid .project {
+
+    margin-bottom: 0;
+
+}
+
+
+.project-grid .project-heading {
+
+    display: block;
+
+}
+
+
+.project-grid .project-number {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+}
+
+
+.project-grid .project-type {
+
+    text-align: left;
+
+    margin-top: 10px;
+
+}
+
+
+/* =========================================================
+   PROJECT VARIANTS
+========================================================= */
+
+.project-variants {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    margin-top: 28px;
+
+}
+
+
+.variant {
+
+    background: var(--surface);
+
+    padding: 12px 12px 18px;
+
+}
+
+
+.variant .video-wrap {
+
+    aspect-ratio: 16 / 9;
+
+}
+
+
+.variant-label {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 15px 4px 0;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .12em;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   STATEMENT
+========================================================= */
+
+.statement {
+
+    margin: 80px 0 170px;
+
+    padding: 130px 0;
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.statement p {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(38px, 5.5vw, 82px);
+
+    line-height: 1;
+
+    letter-spacing: -.05em;
+
+    max-width: 1200px;
+
+    margin: 0;
+
+}
+
+
+.statement span {
+
+    color: #666661;
+
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+.testimonials-section {
+
+    padding: 150px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.testimonials-header {
+
+    display: grid;
+
+    grid-template-columns: 180px 1fr;
+
+    gap: 50px;
+
+    margin-bottom: 90px;
+
+}
+
+
+.testimonials-index {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 14px;
+
+    letter-spacing: .12em;
+
+    color: var(--accent);
+
+    padding-top: 8px;
+
+}
+
+
+.testimonials-header h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(52px, 7vw, 105px);
+
+    line-height: .88;
+
+    letter-spacing: -.06em;
+
+    margin: 0;
+
+}
+
+
+.testimonials-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1px;
+
+    background: var(--line);
+
+    border: 1px solid var(--line);
+    
+
+}
+
+
+.testimonial {
+
+    background: var(--bg);
+
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.testimonial-quote {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(22px, 2.2vw, 32px);
+
+    line-height: 1.2;
+
+    letter-spacing: -.025em;
+
+    margin: 0 0 45px;
+    flex: 1;
+    
+    
+
+}
+
+
+.testimonial-person {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 30px;
+    
+
+}
+
+
+.testimonial-name {
+
+    font-size: 13px;
+
+    color: var(--text);
+
+    margin-bottom: 7px;
+
+}
+
+
+.testimonial-role {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+
+    color: var(--muted);
+
+}
+
+
+.testimonial-client {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+
+    color: var(--muted);
+    
+
+}
+
+
+/* =========================================================
+   PROOF
+========================================================= */
+
+.proof-section {
+
+    padding: 150px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.proof-header {
+
+    display: grid;
+
+    grid-template-columns: 180px 1fr;
+
+    gap: 50px;
+
+    margin-bottom: 75px;
+
+}
+
+
+.proof-index {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 14px;
+
+    letter-spacing: .12em;
+
+    color: var(--accent);
+
+    padding-top: 8px;
+
+}
+
+
+.proof-header h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(52px, 7vw, 105px);
+
+    line-height: .88;
+
+    letter-spacing: -.06em;
+
+    margin: 0 0 25px;
+
+}
+
+
+.proof-header p {
+
+    max-width: 600px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin: 0;
+
+}
+
+
+.proof-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+}
+
+
+.proof-item {
+    position: relative;
+
+    background: var(--surface);
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(216, 255, 62, 0.16);
+
+    box-shadow:
+        0 0 18px rgba(216, 255, 62, 0.04);
+
+    transition:
+        border-color .4s ease,
+        box-shadow .5s ease,
+        transform .4s ease;
+}
+
+.proof-item:hover {
+    border-color: rgba(216, 255, 62, 0.55);
+
+    box-shadow:
+        0 0 20px rgba(216, 255, 62, 0.12),
+        0 0 50px rgba(216, 255, 62, 0.06);
+
+    transform: translateY(-3px);
+}
+
+.proof-item.large {
+
+    grid-column: span 2;
+
+}
+
+
+.proof-item img {
+
+    width: 100%;
+
+    display: block;
+
+    height: auto;
+
+    transition:
+
+        transform .7s cubic-bezier(.2,.7,.2,1);
+
+}
+
+
+.proof-item:hover img {
+
+    transform: scale(1.015);
+
+}
+
+
+.proof-caption {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 16px 4px 5px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .11em;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+
+    padding: 120px 0;
+
+}
+
+
+.cta-label {
+
+    color: var(--accent);
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .15em;
+
+    margin-bottom: 25px;
+
+}
+
+
+.cta h2 {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(65px, 10vw, 150px);
+
+    line-height: .82;
+
+    letter-spacing: -.065em;
+
+    margin: 0 0 55px;
+
+}
+
+
+.cta-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 18px 25px;
+
+    background: var(--accent);
+
+    color: #000;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+
+    transition:
+
+        transform .25s ease;
+
+}
+
+
+.cta-button:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================================================
+   SOCIAL FOOTER
+========================================================= */
+
+.social-footer {
+
+    padding: 90px 0 35px;
+
+}
+
+
+.social-footer-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 50px;
+
+    margin-bottom: 70px;
+
+}
+
+
+.social-footer-title {
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(42px, 6vw, 80px);
+
+    line-height: .9;
+
+    letter-spacing: -.055em;
+
+    margin: 0;
+
+}
+
+
+.social-footer-note {
+
+    max-width: 300px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: var(--muted);
+
+    text-align: right;
+
+}
+
+
+.social-links {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.social-link {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 25px 5px;
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+
+    transition:
+
+        color .25s ease;
+
+    border-right: 1px solid var(--line);
+
+}
+
+
+.social-link:last-child {
+
+    border-right: none;
+
+}
+
+
+.social-link:hover {
+
+    color: var(--accent);
+
+}
+
+
+.social-link svg {
+
+    width: 20px;
+
+    height: 20px;
+
+    fill: currentColor;
+
+}
+
+
+.social-arrow {
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    border-top: 1px solid var(--line);
+
+    padding: 25px 0 40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #666;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width: 800px) {
+
+
+    .page {
+
+        padding: 0 20px;
+
+    }
+
+
+    .personal-intro {
+
+        min-height: 100svh;
+
+        padding-bottom: 55px;
+
+    }
+
+
+    .personal-intro-top {
+
+        gap: 20px;
+
+    }
+
+
+    .personal-intro-top div:last-child {
+
+        display: none;
+
+    }
+
+
+    /*
+        Mobile hero image remains full-width,
+        but gets darker behind typography.
+    */
+
+    .name-stage {
+
+        min-height: 440px;
+
+        margin-left: -20px;
+
+        margin-right: -20px;
+
+        align-items: center;
+
+    }
+
+
+    .name-image::before {
+
+        background:
+
+            linear-gradient(
+                90deg,
+                rgba(10,10,10,.97) 0%,
+                rgba(10,10,10,.68) 65%,
+                rgba(10,10,10,.25) 100%
+            );
+
+    }
+
+
+    .name-line {
+
+        display: block;
+
+        padding: 0 20px;
+
+        white-space: normal;
+
+        font-size: clamp(58px, 16vw, 105px);
+
+        line-height: .9;
+
+    }
+
+
+    .name-prefix {
+
+        display: inline;
+
+        margin-right: .12em;
+
+    }
+
+
+    .name-changing {
+
+        min-width: 2.9em;
+
+        display: inline-block;
+
+    }
+
+
+    .personal-intro-bottom {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .personal-intro-role {
+
+        text-align: left;
+
+    }
+
+
+
+    .about-section,
+    .testimonials-section,
+    .proof-section {
+
+        padding: 100px 0;
+
+    }
+
+
+    .about-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+    }
+
+
+    .about-photo {
+
+        max-width: 500px;
+
+    }
+
+
+    .work-section {
+
+        margin-top: 50px;
+
+        padding-top: 45px;
+
+    }
+
+
+    .section-header,
+    .testimonials-header,
+    .proof-header {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-bottom: 65px;
+
+    }
+
+
+    .section-index,
+    .testimonials-index,
+    .proof-index {
+
+        padding-top: 0;
+
+    }
+
+
+    .section-header h2,
+    .testimonials-header h2,
+    .proof-header h2 {
+
+        font-size: 52px;
+
+    }
+
+
+    .project {
+
+        margin-bottom: 95px;
+
+    }
+
+
+    .project-heading {
+
+        display: block;
+
+        padding-bottom: 20px;
+
+    }
+
+
+    .project-number {
+
+        display: block;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .project-type {
+
+        text-align: left;
+
+        margin-top: 10px;
+
+    }
+
+
+    .project-info {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+    }
+
+
+    .project-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 90px;
+
+    }
+
+
+    .project-variants {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .statement {
+
+        margin: 40px 0 100px;
+
+        padding: 90px 0;
+
+    }
+
+
+    .testimonials-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .testimonial {
+
+        padding: 30px;
+
+    }
+
+
+    .proof-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .proof-item.large {
+
+        grid-column: span 1;
+
+    }
+
+
+    .social-footer-top {
+
+        display: block;
+
+    }
+
+
+    .social-footer-note {
+
+        text-align: left;
+
+        margin-top: 25px;
+
+    }
+
+
+    .social-links {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .social-link {
+
+        border-right: none;
+
+        border-bottom: 1px solid var(--line);
+
+    }
+
+
+    .social-link:last-child {
+
+        border-bottom: none;
+
+    }
+
+
+    .cta {
+
+        padding: 80px 0 90px;
+
+    }
+
+
+    .footer {
+
+        display: block;
+
+    }
+
+
+    .footer div + div {
+
+        margin-top: 12px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- =====================================================
+     PERSONAL HERO
+===================================================== -->
+
+<section class="personal-intro">
+
+
+    <!-- TOP -->
+
+    <div class="personal-intro-top">
+
+        <div>
+            FASIL / MEDIA CONSULTANT & VIDEO PRODUCER
+        </div>
+
+        <div>
+            BENGALURU · INDIA
+        </div>
+
+    </div>
+
+
+
+    <!-- CINEMATIC NAME -->
+
+    <div class="name-stage">
+
+
+        <!--
+            FULL WIDTH IMAGE BANNER
+
+            Replace these four images with your own.
+
+            IMPORTANT:
+            Use wide landscape photographs.
+            Recommended: 1920 × 900 or larger.
+        -->
+
+        <div class="name-image">
+
+
+            <img
+                class="name-photo active"
+                data-index="0"
+                src="assets/fasil-hero-01.jpg"
+                alt="Fasil filming"
+            >
+
+
+            <img
+                class="name-photo"
+                data-index="1"
+                src="assets/fasil-hero-02.jpg"
+                alt="Fasil filmmaking"
+            >
+
+
+            <img
+                class="name-photo"
+                data-index="2"
+                src="assets/fasil-hero-03.jpg"
+                alt="Fasil shooting"
+            >
+
+
+            <img
+                class="name-photo"
+                data-index="3"
+                src="assets/fasil-hero-04.jpg"
+                alt="Fasil directing"
+            >
+
+        </div>
+
+
+
+        <!-- NAME -->
+
+        <div class="name-line">
+
+
+            <span class="name-prefix">
+                Hi I'm
+            </span>
+
+
+            <span class="name-changing">
+
+
+                <span
+                    class="name-word active"
+                    data-index="0"
+                >
+                    Fasil
+                </span>
+
+
+                <span
+                    class="name-word"
+                    data-index="1"
+                >
+                    ഫാസിൽ
+                </span>
+
+
+                <span
+                    class="name-word"
+                    data-index="2"
+                >
+                    फासिल
+                </span>
+
+
+                <span
+                    class="name-word"
+                    data-index="3"
+                >
+                    فاسيل
+                </span>
+
+
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- BOTTOM -->
+
+    <div class="personal-intro-bottom">
+
+        
+        <div class="personal-intro-note">
+
+            I work mostly with businesses that have something
+            worth saying but need help turning it into something
+            people will actually watch.
+
+        </div>
+        
+        <div class="personal-intro-role">
+
+            Video Producer<br>
+            Editor<br>
+            Media Consultant<br>
+            Remote Direction
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="about-section">
+
+    <div class="about-grid">
+
+        <div class="about-photo">
+
+            <!-- HEADSHOT PLACEHOLDER -->
+            <img
+                src="assets/fasil-headshot.jpg"
+                alt="Fasil — Media Consultant & Video Producer"
+            >
+
+        </div>
+
+
+        <div>
+
+            <div class="about-label">
+                About me
+            </div>
+
+
+            <h2 class="about-title">
+
+                I work somewhere<br>
+                between the story<br>
+                and the footage.
+
+            </h2>
+
+
+            <p class="about-copy">
+
+                I'm a media consultant and video producer based in
+                Bengaluru, working across production, post-production
+                and content strategy. Over the past few years, most of
+                my work has been with businesses and teams across
+                Australia and New Zealand.
+
+                <br><br>
+
+                My background is slightly unconventional. I studied
+                computer science, never went to film school and learned
+                most of what I know by making things, working with
+                people better than me and figuring out what the story
+                needed next.
+
+                <br><br>
+
+                I've run a media agency, worked with F500 organisations,
+                startups, nonprofits and small businesses, and spent
+                a lot of time working remotely with teams where the
+                footage doesn't always arrive perfectly.
+
+                <br><br>
+
+                That's actually something I enjoy. Give me a folder
+                full of mixed cameras, imperfect shots and a rough idea
+                of what needs to be said, and I'll usually find a way
+                into the story.
+
+                <br><br>
+
+                I'm more interested in a good cut, a considered colour
+                grade and sound that puts you somewhere than adding
+                effects for the sake of showing what an editor can do.
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     VISUAL WORK / COLOUR & PHOTOGRAPHY
+===================================================== -->
+
+<section class="visual-section">
+
+
+    <div class="visual-header">
+
+        <div class="visual-index">
+            01 / VISUALS
+        </div>
+
+
+        <div>
+
+            <h2>
+                HOW I<br>
+                SEE THINGS.
+            </h2>
+
+
+            <p>
+
+                A small collection of frames from films, travel
+                and projects I've shot myself.
+
+                <br><br>
+
+                Mostly here for the light, colour and composition.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="visual-gallery">
+
+
+        <div class="visual-item visual-large">
+
+            <img
+                src="assets/visual-01.jpg"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+
+
+        <div class="visual-item">
+
+            <img
+                src="assets/visual-02.jpg"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+
+
+        <div class="visual-item">
+
+            <img
+                src="assets/visual-03.webp"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+
+
+        <div class="visual-item">
+
+            <img
+                src="assets/visual-04.jpg"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+
+        <div class="visual-item">
+
+            <img
+                src="assets/visual-04b.jpg"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+
+
+        <div class="visual-item visual-wide">
+
+            <img
+                src="assets/visual-05.jpg"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+
+
+        <div class="visual-item">
+
+            <img
+                src="assets/visual-06.jpg"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+        <div class="visual-item">
+
+            <img
+                src="assets/visual-07.jpg"
+                alt="Selected frame by Fasil"
+            >
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 01
+     HUNTING & OUTDOOR
+===================================================== -->
+
+<section class="work-section">
+
+
+    <div class="section-header">
+
+
+        <div class="section-index">
+            01 / 03
+        </div>
+
+
+        <div>
+
+
+            <h2>
+                HUNTING &<br>
+                OUTDOOR
+            </h2>
+
+
+            <p>
+
+                Most of my recent editing work has been for hunting
+                and outdoor businesses in Australia.
+
+                <br><br>
+
+                The footage is usually supplied by the client.
+                I handle the edit, story structure, sound, colour
+                and, when needed, remote direction.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PROJECT 01 -->
+
+    <article class="project featured">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 01
+            </span>
+
+
+            <h3 class="project-name">
+                Living the Hunter Lifestyle
+            </h3>
+
+
+            <span class="project-type">
+                Forest to Fork
+            </span>
+
+
+        </div>
+
+
+
+        <div
+            class="video-wrap"
+            data-video="temqJ2R7SfU"
+            data-start="0"
+        >
+
+
+            <img
+                src="https://img.youtube.com/vi/temqJ2R7SfU/maxresdefault.jpg"
+                alt="Living the Hunter Lifestyle"
+            >
+
+
+            <div class="play"></div>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div></div>
+
+
+            <p class="project-description">
+
+                A landing film built almost entirely from an existing archive.
+
+                <br><br>
+
+                Years of footage. Different cameras. Different resolutions.
+                No obvious narrative.
+
+                <br><br>
+
+                I went through the archive, found the story, then directed
+                a new piece of performance from Luke to give the film
+                a beginning.
+
+                <br><br>
+
+                The goal wasn't to make an outfitter montage.
+
+                It was to let someone who had never met Luke understand
+                what spending a few days with him might actually feel like.
+
+            </p>
+
+
+        </div>
+
+
+    </article>
+
+
+
+    <!-- PROJECTS 02 + 03 -->
+
+    <div class="project-grid">
+
+
+        <!-- PROJECT 02 -->
+
+        <article class="project">
+
+
+            <div class="project-heading">
+
+
+                <span class="project-number">
+                    PROJECT 02
+                </span>
+
+
+                <h3 class="project-name">
+                    Bow Hunting in State Forest
+                </h3>
+
+
+                <span class="project-type">
+                    Diary of a Hunting Guide / E04
+                </span>
+
+
+            </div>
+
+
+
+            <div
+                class="video-wrap"
+                data-video="AfLIuyh_7Vg"
+                data-start="69"
+            >
+
+
+                <img
+                    src="https://img.youtube.com/vi/AfLIuyh_7Vg/maxresdefault.jpg"
+                    alt="Bow Hunting in State Forest"
+                >
+
+
+                <div class="play"></div>
+
+
+            </div>
+
+
+
+            <div class="project-info">
+
+
+                <div></div>
+
+
+                <p class="project-description">
+
+                    No deer. No conventional payoff.
+
+                    <br><br>
+
+                    This episode was about making an anticlimactic hunting
+                    trip enjoyable anyway.
+
+                    <br><br>
+
+                    Bow hunting naturally creates more tension and uncertainty
+                    than a long-range rifle hunt.
+
+                    I leaned into that rather than trying to manufacture
+                    a bigger ending.
+
+                </p>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- PROJECT 03 -->
+
+        <article class="project">
+
+
+            <div class="project-heading">
+
+
+                <span class="project-number">
+                    PROJECT 03
+                </span>
+
+
+                <h3 class="project-name">
+                    2 Fallow Deer in 1 Arvo
+                </h3>
+
+
+                <span class="project-type">
+                    Diary of a Hunting Guide / E03
+                </span>
+
+
+            </div>
+
+
+
+            <div
+                class="video-wrap"
+                data-video="9TbWkg43MzE"
+                data-start="115"
+            >
+
+
+                <img
+                    src="https://img.youtube.com/vi/9TbWkg43MzE/maxresdefault.jpg"
+                    alt="2 Fallow Deer in 1 Arvo"
+                >
+
+
+                <div class="play"></div>
+
+
+            </div>
+
+
+
+            <div class="project-info">
+
+
+                <div></div>
+
+
+                <p class="project-description">
+
+                    A successful public-land hunt shaped almost entirely
+                    around what the camera managed to capture.
+
+                    <br><br>
+
+                    The missing pieces were reconstructed through a recap
+                    recorded by the guide.
+
+                    <br><br>
+
+                    The edit had to turn disconnected moments into something
+                    that felt like one continuous afternoon.
+
+                </p>
+
+
+            </div>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 02
+     PERSONAL TRAVEL FILMS
+===================================================== -->
+
+<section class="work-section">
+
+
+    <div class="section-header">
+
+
+        <div class="section-index">
+            02 / 03
+        </div>
+
+
+        <div>
+
+
+            <h2>
+                PERSONAL<br>
+                TRAVEL FILMS
+            </h2>
+
+
+            <p>
+
+                These are older films, but they're important to me.
+
+                I shot, edited and graded every shot.
+
+                <br><br>
+
+                They taught me how to look for light, movement,
+                rhythm and atmosphere before I ever started doing
+                this professionally.
+
+                <br><br>
+
+                Please note: these are from my phase where 120fps
+                was a thing. I've changed. 😉
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PROJECT 01 -->
+
+    <article class="project">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 01
+            </span>
+
+
+            <h3 class="project-name">
+                Spiti Valley Through My Eyes
+            </h3>
+
+
+            <span class="project-type">
+                Personal Film
+            </span>
+
+
+        </div>
+
+
+
+        <div
+            class="video-wrap"
+            data-video="Y1zgWoNAOok"
+            data-start="0"
+        >
+
+
+            <img
+                src="https://img.youtube.com/vi/Y1zgWoNAOok/maxresdefault.jpg"
+                alt="Spiti Valley Through My Eyes"
+            >
+
+
+            <div class="play"></div>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div></div>
+
+
+            <p class="project-description">
+
+                A solo trip through the Himalayas, shot on a Sony A6300.
+
+                <br><br>
+
+                I documented the entire journey as a personal memoir —
+                the landscapes, the people and the experiences along
+                the way.
+
+                <br><br>
+
+                It became one of those trips that stays with you long
+                after you've returned home.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="project-variants">
+
+
+            <div class="variant">
+
+
+                <div
+                    class="video-wrap"
+                    data-video="vuCSyuaT2wk"
+                    data-start="0"
+                >
+
+
+                    <img
+                        src="https://img.youtube.com/vi/vuCSyuaT2wk/maxresdefault.jpg"
+                        alt="Spiti Short Cut"
+                    >
+
+
+                    <div class="play"></div>
+
+
+                </div>
+
+
+                <div class="variant-label">
+
+
+                    <span>
+                        Short Cut
+                    </span>
+
+
+                    <span>
+                        Version 02
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </article>
+
+
+
+    <!-- PROJECT 02 -->
+
+    <article class="project">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 02
+            </span>
+
+
+            <h3 class="project-name">
+                Kashmir: Heaven on Earth
+            </h3>
+
+
+            <span class="project-type">
+                Personal Film
+            </span>
+
+
+        </div>
+
+
+
+        <div
+            class="video-wrap"
+            data-video="J2AqZM6kB60"
+            data-start="0"
+        >
+
+
+            <img
+                src="https://img.youtube.com/vi/J2AqZM6kB60/maxresdefault.jpg"
+                alt="Kashmir Heaven on Earth"
+            >
+
+
+            <div class="play"></div>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div></div>
+
+
+            <p class="project-description">
+
+                A travel film built around contrast.
+
+                <br><br>
+
+                Srinagar's noise and movement on one side.
+
+                Dal Lake, the tulip gardens and quieter moments
+                on the other.
+
+                <br><br>
+
+                More than the locations, I wanted the film to retain
+                the warmth of being welcomed into a place as a stranger.
+
+            </p>
+
+
+        </div>
+
+
+    </article>
+
+
+
+    <!-- PROJECT 03 -->
+
+    <article class="project">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 03
+            </span>
+
+
+            <h3 class="project-name">
+                The Kurunji Blooms
+            </h3>
+
+
+            <span class="project-type">
+                Western Ghats / 2018
+            </span>
+
+
+        </div>
+
+
+
+        <div
+            class="video-wrap"
+            data-video="3jvZYztGy90"
+            data-start="0"
+        >
+
+
+            <img
+                src="https://img.youtube.com/vi/3jvZYztGy90/maxresdefault.jpg"
+                alt="The Kurunji Blooms"
+            >
+
+
+            <div class="play"></div>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div></div>
+
+
+            <p class="project-description">
+
+                The Neelakurunji blooms once every twelve years.
+
+                <br><br>
+
+                I went to the Nilgiris with a camera, a gimbal and very
+                little money, sat down for one long stretch and built
+                this film around the landscape.
+
+                <br><br>
+
+                An early film, made entirely in Premiere and Lumetri.
+
+                It later found a surprisingly large audience on Instagram.
+
+            </p>
+
+
+        </div>
+
+
+    </article>
+
+
+
+    <!-- PROJECT 04 -->
+
+    <article class="project">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 04
+            </span>
+
+
+            <h3 class="project-name">
+                Chasing Delhi
+            </h3>
+
+
+            <span class="project-type">
+                Personal Film
+            </span>
+
+
+        </div>
+
+
+
+        <div
+            class="video-wrap"
+            data-video="DAIN06KxDts"
+            data-start="0"
+        >
+
+
+            <img
+                src="https://img.youtube.com/vi/DAIN06KxDts/maxresdefault.jpg"
+                alt="Chasing Delhi"
+            >
+
+
+            <div class="play"></div>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div></div>
+
+
+            <p class="project-description">
+
+                No elaborate concept.
+
+                <br><br>
+
+                I found a track I loved, went back through footage
+                from a solo trip and cut the city around its rhythm.
+
+            </p>
+
+
+        </div>
+
+
+    </article>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     STATEMENT
+===================================================== -->
+
+<section class="statement">
+
+
+    <p>
+
+        I’m interested in edits that
+        <span>let a story breathe.</span>
+
+        Not edits that exist purely
+        to prove that an editor was there.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION 03
+     COMMERCIAL & EVENT
+===================================================== -->
+
+<section class="work-section">
+
+
+    <div class="section-header">
+
+
+        <div class="section-index">
+            03 / 03
+        </div>
+
+
+        <div>
+
+
+            <h2>
+                COMMERCIAL<br>
+                & EVENT
+            </h2>
+
+
+            <p>
+
+                A few projects from outside the outdoor space,
+                including event films and SaaS product videos.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PROJECT 01 -->
+
+    <article class="project">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 01
+            </span>
+
+
+            <h3 class="project-name">
+                Siemens Hackathon
+            </h3>
+
+
+            <span class="project-type">
+                Siemens × Nasscom Foundation
+            </span>
+
+
+        </div>
+
+
+
+        <div
+            class="video-wrap"
+            data-video="bZUmqKFzAyc"
+            data-start="0"
+        >
+
+
+            <img
+                src="https://img.youtube.com/vi/bZUmqKFzAyc/maxresdefault.jpg"
+                alt="Siemens Hackathon Bangalore"
+            >
+
+
+            <div class="play"></div>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div></div>
+
+
+            <p class="project-description">
+
+                Three days. A room full of young makers.
+
+                <br><br>
+
+                The objective was to capture the energy of the
+                participants while still communicating the impact
+                behind the event.
+
+                <br><br>
+
+                Shot by me and an associate.
+                Directed, edited and coloured by me.
+
+            </p>
+
+
+        </div>
+
+
+    </article>
+
+
+
+    <!-- PROJECT 02 -->
+
+    <article class="project">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 02
+            </span>
+
+
+            <h3 class="project-name">
+                CodeDesign.ai — Platform Asset
+            </h3>
+
+
+            <span class="project-type">
+                Product Video
+            </span>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div>
+
+
+                <p class="project-description">
+
+                    A commercial product film created entirely from
+                    stock footage.
+
+                    <br><br>
+
+                    The idea was to show the AI companion feature through
+                    the perspective of a business owner rather than simply
+                    listing product features.
+
+                    <br><br>
+
+                    The same film was adapted for two placements:
+                    a superwide website banner and a conventional
+                    16:9 version.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SAME PROJECT / TWO FORMATS -->
+
+        <div class="project-variants">
+
+
+            <!-- SUPERWIDE -->
+
+            <div class="variant">
+
+
+                <div
+                    class="video-wrap"
+                    data-video="7l47kdmMsb0"
+                    data-start="0"
+                >
+
+
+                    <img
+                        src="https://img.youtube.com/vi/7l47kdmMsb0/maxresdefault.jpg"
+                        alt="CodeDesign Platform Asset Superwide"
+                    >
+
+
+                    <div class="play"></div>
+
+
+                </div>
+
+
+                <div class="variant-label">
+
+
+                    <span>
+                        Superwide Website Banner
+                    </span>
+
+
+                    <span>
+                        Format 01
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- 16:9 -->
+
+            <div class="variant">
+
+
+                <div
+                    class="video-wrap"
+                    data-video="lI4ghwNR4Zs"
+                    data-start="0"
+                >
+
+
+                    <img
+                        src="https://img.youtube.com/vi/lI4ghwNR4Zs/maxresdefault.jpg"
+                        alt="CodeDesign Platform Asset 16:9"
+                    >
+
+
+                    <div class="play"></div>
+
+
+                </div>
+
+
+                <div class="variant-label">
+
+
+                    <span>
+                        16:9 Version
+                    </span>
+
+
+                    <span>
+                        Format 02
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </article>
+
+
+
+    <!-- PROJECT 03 -->
+
+    <article class="project">
+
+
+        <div class="project-heading">
+
+
+            <span class="project-number">
+                PROJECT 03
+            </span>
+
+
+            <h3 class="project-name">
+                cWarmer
+            </h3>
+
+
+            <span class="project-type">
+                Codilar
+            </span>
+
+
+        </div>
+
+
+
+        <div
+            class="video-wrap"
+            data-video="AXNF6n0_C6A"
+            data-start="0"
+        >
+
+
+            <img
+                src="https://img.youtube.com/vi/AXNF6n0_C6A/maxresdefault.jpg"
+                alt="cWarmer by Codilar"
+            >
+
+
+            <div class="play"></div>
+
+
+        </div>
+
+
+
+        <div class="project-info">
+
+
+            <div></div>
+
+
+            <p class="project-description">
+
+                A B2B SaaS explainer created for a product launch
+                and technology conference in Florida.
+
+                <br><br>
+
+                I wrote the script, helped shape the narrative and
+                worked with a presenter hired via Fiverr who recorded
+                the performance in greenscreen.
+
+                <br><br>
+
+                Motion design was developed with a specialist associate.
+
+            </p>
+
+
+        </div>
+
+
+    </article>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     TESTIMONIALS
+===================================================== -->
+
+<section class="testimonials-section">
+
+
+    <div class="testimonials-header">
+
+
+        <div class="testimonials-index">
+            04 / TESTIMONIALS
+        </div>
+
+
+        <div>
+
+
+            <h2>
+                WHAT PEOPLE<br>
+                SAY.
+            </h2>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="testimonials-grid">
+
+
+        <article class="testimonial">
+
+
+            <p class="testimonial-quote">
+
+                “Fasil delivered on our agreed project and exceeded my expectations. I've not only walked away with a finished product of which I did not think possible, considering the materials I provided. But also with resources to help me better prepare for Fasil's and my next endeavor”
+
+            </p>
+
+
+            <div class="testimonial-person">
+
+
+                <div>
+
+
+                    <div class="testimonial-name">
+                        Luke Risk
+                    </div>
+
+
+                    <div class="testimonial-role">
+                        Founder / Forest to Fork
+                    </div>
+
+
+                </div>
+
+
+                <div class="testimonial-client">
+                    NSW | AUS
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="testimonial">
+
+
+            <p class="testimonial-quote">
+
+                “Mr. Fasil has been operating as an offshore media & strategy consultant for our firm, assisting us
+                remotely with our digital presence, media post-production frameworks, and corporate messaging
+                structure.”
+
+            </p>
+
+
+            <div class="testimonial-person">
+
+
+                <div>
+
+
+                    <div class="testimonial-name">
+                        Michael Malak
+                    </div>
+
+
+                    <div class="testimonial-role">
+                        Managing Director / Jacquel Australia Project Management (JAPM) Pty Ltd
+                    </div>
+
+
+                </div>
+
+
+                <div class="testimonial-client">
+                    NSW | AUS
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="testimonial">
+
+
+            <p class="testimonial-quote">
+
+                “Fasil is a great person to work with. Not only does he listen to every detail but also has great ideas to help with executing the desired result. Thank you and look forward to future projects.”
+
+            </p>
+
+
+            <div class="testimonial-person">
+
+
+                <div>
+
+
+                    <div class="testimonial-name">
+                        Andi K
+                    </div>
+
+
+                    <div class="testimonial-role">
+                        Founder and Coach / Rally & Range
+                    </div>
+
+
+                </div>
+
+
+                <div class="testimonial-client">
+                    VIC | AUS
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="testimonial">
+
+
+            <p class="testimonial-quote">
+
+                “If you need someone reliable who can work under tight deadlines, this is your guy. I'll be coming back for future projects.”
+
+            </p>
+
+
+            <div class="testimonial-person">
+
+
+                <div>
+
+
+                    <div class="testimonial-name">
+                        Adarsh Lal
+                    </div>
+
+
+                    <div class="testimonial-role">
+                        Founder / Anomaly Cybersecurity
+                    </div>
+
+
+                </div>
+
+
+                <div class="testimonial-client">
+                    Wellington | NZ
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PROOF
+===================================================== -->
+
+<section class="proof-section">
+
+
+    <div class="proof-header">
+
+
+        <div class="proof-index">
+            RESULTS & CLIENT RESPONSES
+        </div>
+
+
+        <div>
+
+
+            <h2>
+                LET RESULTS<br>
+                DO THE TALKING.
+            </h2>
+
+
+            <p>
+
+                Some things are easier to show than explain.
+
+                A few screenshots, published pieces and bits
+                from projects I've worked on.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="proof-grid">
+
+
+        <div class="proof-item large">
+
+
+            <img
+                src="assets/proof-01.jpg"
+                alt="Selected work"
+            >
+
+
+            <div class="proof-caption">
+
+
+                <span>
+                    VIEW METRIC
+                </span>
+
+
+                <span>
+                    CLIENT'S INSTAGRAM
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="proof-item">
+
+
+            <img
+                src="assets/proof-02.jpg"
+                alt="Selected work"
+            >
+
+
+            <div class="proof-caption">
+
+
+                <span>
+                    RESPONSES
+                </span>
+
+
+                <span>
+                   01
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="proof-item">
+
+
+            <img
+                src="assets/proof-03.jpg"
+                alt="Selected work"
+            >
+
+
+            <div class="proof-caption">
+
+
+                 <span>
+                    RESPONSES
+                </span>
+
+
+                <span>
+                    02
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="proof-item">
+
+
+            <img
+                src="assets/proof-04.jpg"
+                alt="Selected work"
+            >
+
+
+            <div class="proof-caption">
+
+
+                 <span>
+                    RESPONSES
+                </span>
+
+
+                <span>
+                    03
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="proof-item">
+
+
+            <img
+                src="assets/proof-05.jpg"
+                alt="Selected work"
+            >
+
+
+            <div class="proof-caption">
+
+
+                 <span>
+                    RESPONSES
+                </span>
+
+
+                <span>
+                    04
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+
+    <div class="cta-label">
+        If you'd like to talk
+    </div>
+
+
+    <h2>
+        Let's talk.
+    </h2>
+
+
+    <a
+        class="cta-button"
+        href="mailto:fasil@fivesquare.co"
+    >
+
+        Email Me
+
+        <span>↗</span>
+
+    </a>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SOCIAL
+===================================================== -->
+
+<section class="social-footer">
+
+
+    <div class="social-footer-top">
+
+
+        <h2 class="social-footer-title">
+
+            Find me<br>
+            elsewhere.
+
+        </h2>
+
+
+        <div class="social-footer-note">
+
+            More work, behind the scenes and the occasional
+            thing I make when I'm not editing for someone else.
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="social-links">
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+            class="social-link"
+            href="https://www.instagram.com/fasilpeekz/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+
+            <span>
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                    <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zm8.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+
+                </svg>
+
+                Instagram
+
+            </span>
+
+
+            <span class="social-arrow">
+                ↗
+            </span>
+
+
+        </a>
+
+
+
+        <!-- YOUTUBE -->
+
+        <a
+            class="social-link"
+            href="https://www.youtube.com/peekz"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+
+            <span>
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.2 3.5-6.2 3.5z"/>
+
+                </svg>
+
+                YouTube
+
+            </span>
+
+
+            <span class="social-arrow">
+                ↗
+            </span>
+
+
+        </a>
+
+
+
+        <!-- LINKEDIN -->
+
+        <a
+            class="social-link"
+            href="https://www.linkedin.com/in/fasilpk/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+
+            <span>
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                    <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM2.75 9.5h4.5V21h-4.5V9.5zM9.5 9.5h4.3v1.57h.06c.6-1.1 2.07-2.27 4.26-2.27 4.55 0 5.38 2.99 5.38 6.88V21H19v-4.7c0-1.12-.02-2.56-1.56-2.56-1.56 0-1.8 1.22-1.8 2.48V21H11.1V9.5H9.5z"/>
+
+                </svg>
+
+                LinkedIn
+
+            </span>
+
+
+            <span class="social-arrow">
+                ↗
+            </span>
+
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+    <div>
+        Fasil / FiveSquare
+    </div>
+
+
+    <div>
+        Bengaluru · Working with teams across ANZ
+    </div>
+
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =========================================================
+   MULTILINGUAL NAME + FULL WIDTH IMAGE ROTATION
+========================================================= */
+
+(function() {
+
+
+    const words =
+        document.querySelectorAll(".name-word");
+
+
+    const photos =
+        document.querySelectorAll(".name-photo");
+
+
+    let currentIndex = 0;
+
+
+    function showName(index) {
+
+
+        words.forEach(function(word) {
+
+
+            word.classList.toggle(
+
+                "active",
+
+                Number(word.dataset.index) === index
+
+            );
+
+
+        });
+
+
+        photos.forEach(function(photo) {
+
+
+            photo.classList.toggle(
+
+                "active",
+
+                Number(photo.dataset.index) === index
+
+            );
+
+
+        });
+
+
+    }
+
+
+    /*
+        Change language / image every 2.5 seconds.
+    */
+
+    setInterval(function() {
+
+
+        currentIndex++;
+
+
+        if (currentIndex >= words.length) {
+
+            currentIndex = 0;
+
+        }
+
+
+        showName(currentIndex);
+
+
+    }, 2500);
+
+
+})();
+
+
+
+/* =========================================================
+   YOUTUBE CLICK-TO-PLAY
+========================================================= */
+
+document
+    .querySelectorAll(".video-wrap")
+    .forEach(function(wrapper) {
+
+
+        wrapper.addEventListener(
+            "click",
+            function() {
+
+
+                const videoID =
+                    wrapper.dataset.video;
+
+
+                const startTime =
+                    wrapper.dataset.start || "0";
+
+
+                if (!videoID) {
+
+
+                    console.error(
+                        "YouTube video ID missing."
+                    );
+
+
+                    return;
+
+                }
+
+
+                const youtubeURL =
+
+                    "https://www.youtube-nocookie.com/embed/" +
+
+                    videoID +
+
+                    "?autoplay=1" +
+
+                    "&rel=0" +
+
+                    "&start=" +
+
+                    startTime;
+
+
+                wrapper.innerHTML = `
+
+                    <iframe
+
+                        src="${youtubeURL}"
+
+                        title="Selected work by Fasil"
+
+                        referrerpolicy="strict-origin-when-cross-origin"
+
+                        allow="
+                            accelerometer;
+                            autoplay;
+                            clipboard-write;
+                            encrypted-media;
+                            gyroscope;
+                            picture-in-picture;
+                            web-share
+                        "
+
+                        allowfullscreen>
+
+                    </iframe>
+
+                `;
+
+
+            }
+
+        );
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
